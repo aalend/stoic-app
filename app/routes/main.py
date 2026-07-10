@@ -47,3 +47,13 @@ def index():
             db.session.commit()
 
     return render_template('journal/index.html', result=result)
+
+
+@main.route('/history')
+def history():
+    if not session.get('user_id'):
+        return redirect(url_for('auth.login'))
+
+    entries = Entry.query.filter_by(user_id=session.get('user_id')).all()
+
+    return render_template('journal/history.html', entries=entries)

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Your history</h1>
+    {% for entry in entries %}
+        <div>
+            <p>{{ entry.created_at }}</p>
+            <p>{{ entry.text }}</p>
+            <h3>Teme</h3>
+            {% for theme in entry.themes %}
+                <span>{{ theme.name }}</span>
+            {% endfor %}
+            <h3>Stoic kartice</h3>
+            {% for card in entry.stoic_cards %}
+                <p>{{ card.author }}</p>
+                <p>{{ card.quote }}</p>
+                <p>{{ card.principle }}</p>
+                <p>{{ card.bridge }}</p>
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock %}
