@@ -1,9 +1,10 @@
 from flask import Blueprint, redirect, render_template, request, session, url_for
+from sqlalchemy import func
 
 from app import db
 from app.models.entry import Entry
 from app.models.stoic_card import StoicCard
-from app.models.theme import Theme
+from app.models.theme import Theme, entry_themes
 from app.services.ai import get_stoic_wisdom
 
 main = Blueprint('main', __name__)
@@ -55,5 +56,16 @@ def history():
         return redirect(url_for('auth.login'))
 
     entries = Entry.query.filter_by(user_id=session.get('user_id')).all()
+    repeated_themes = (
+        db.session.query(Theme, func.count(Theme.id).label('count'))
+        .join(entry_themes)
+        .join(Entry)
+        .filter(Entry.user_id == session.get('user_id'))  # type: ignore
+        .group_by(Theme.id)
+        .having(func.count(Theme.id) > 3)
+        .all()
+    )
 
-    return render_template('journal/history.html', entries=entries)
+    return render_template(
+        'journal/history.html', entries=entries, repeated_themes=repeated_themes
+    )

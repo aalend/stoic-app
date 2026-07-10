@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
     <h1>Your history</h1>
+    {% if repeated_themes %}
+        <div>
+            <h2>Repeated Themes</h2>
+            {% for theme, count in repeated_themes %}
+                <p>{{ theme.name }} — pojavila se {{ count }} puta</p>
+            {% endfor %}
+        </div>
+    {% endif %}
     {% for entry in entries %}
         <div>
             <p>{{ entry.created_at }}</p>
