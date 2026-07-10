@@ -1,7 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-from app.routes.main import main
 from config import Config
 
 # Init db
@@ -14,9 +13,6 @@ def create_app():
     # Load all settings from class Config
     app.config.from_object(Config)
 
-    # Register blueprint form routes/main
-    app.register_blueprint(main)
-
     # Connect db with Flask app
     db.init_app(app)
 
@@ -24,4 +20,12 @@ def create_app():
         from app.models import Entry, StoicCard, Theme, User
 
         db.create_all()
+
+    # Register blueprint form routes/
+    from app.routes.auth import auth
+    from app.routes.main import main
+
+    app.register_blueprint(main)
+    app.register_blueprint(auth)
+
     return app

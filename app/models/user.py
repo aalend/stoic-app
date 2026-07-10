@@ -15,5 +15,11 @@ class User(db.Model):
 
     entries = db.relationship('Entry', back_populates='user')
 
+    def __init__(self, name, email, password=None, google_id=None):
+        self.name = name
+        self.email = email
+        self.password = password
+        self.google_id = google_id
+
     def __repr__(self):
         return f'<User {self.email}>'
