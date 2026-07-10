@@ -24,7 +24,7 @@ def register():
             return redirect(url_for('auth.register'))
 
         # Generate hashed password
-        hashed_password = bcrypt.generate_password_hash(password).decode('utc-8')
+        hashed_password = bcrypt.generate_password_hash(password)
 
         # Save user
         new_user = User(name=name, email=email, password=hashed_password)
