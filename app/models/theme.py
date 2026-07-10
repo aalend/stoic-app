@@ -10,5 +10,8 @@ class Theme(db.Model):
 
     entries = db.relationship('Entry', secondary=entry_themes, back_populates='themes')
 
+    def __init__(self, name):
+        self.name = name
+
     def __repr__(self):
         return f'<Theme {self.id}>'

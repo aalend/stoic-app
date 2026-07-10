@@ -16,5 +16,9 @@ class Entry(db.Model):
     stoic_cards = db.relationship('StoicCard', back_populates='entry')
     themes = db.relationship('Theme', secondary=entry_themes, back_populates='entries')
 
+    def __init__(self, user_id, text):
+        self.user_id = user_id
+        self.text = text
+
     def __repr__(self):
         return f'<Entry {self.id}>'

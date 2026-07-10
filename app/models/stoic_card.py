@@ -13,5 +13,12 @@ class StoicCard(db.Model):
 
     entry = db.relationship('Entry', back_populates='stoic_cards')
 
+    def __init__(self, entry_id, author, quote, principle, bridge):
+        self.entry_id = entry_id
+        self.author = author
+        self.quote = quote
+        self.principle = principle
+        self.bridge = bridge
+
     def __repr__(self):
         return f'<StoicCard {self.id}>'
