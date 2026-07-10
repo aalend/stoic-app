@@ -31,7 +31,7 @@ def get_stoic_wisdom(entry_text):
         model='gemini-3.1-flash-lite', contents=prompt
     )
 
-    raw = response.text.strip()
+    raw = (response.text or '').strip()
     clean = raw.replace('```json', '').replace('```', '').strip()
 
     return json.loads(clean)
