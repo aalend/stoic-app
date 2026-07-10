@@ -10,6 +10,7 @@
       <a href="{{ url_for('main.index') }}">Stoic Mirror</a>
 
       {% if session.get('user_id') %}
+      <a href="{{ url_for('main.history') }}">History</a>
       <a href="{{ url_for('auth.logout') }}">Logout</a>
       {% else %}
       <a href="{{ url_for('auth.login') }}">Login</a>
@@ -23,9 +24,7 @@
       {% endfor %} {% endif %} {% endwith %}
 
       <!-- Block content placeholder -->
-      <main id='site-main' tabindex='-1'>
-        {% block content %}{% endblock %}
-      </main>
+      <main id="site-main" tabindex="-1">{% block content %}{% endblock %}</main>
     </nav>
   </body>
 </html>
