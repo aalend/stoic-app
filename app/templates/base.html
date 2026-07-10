@@ -23,7 +23,9 @@
       {% endfor %} {% endif %} {% endwith %}
 
       <!-- Block content placeholder -->
-      {% block content %}{% endblock %}
+      <main id='site-main' tabindex='-1'>
+        {% block content %}{% endblock %}
+      </main>
     </nav>
   </body>
 </html>

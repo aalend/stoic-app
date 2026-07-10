@@ -1,8 +1,24 @@
 {% extends "base.html" %}
-
 {% block title %}Home | Stoic Mirror{% endblock %}
-
 {% block content %}
-<h1>Welcome!</h1>
-<p>How are you today?</p>
+    <h1>How are you today?</h1>
+    <form method="POST">
+        <textarea name="entry_text" id="" placeholder="How was your day?"></textarea>
+        <button type="submit">Seek wisdom</button>
+    </form>
+    {% if result %}
+        <h2>Themes</h2>
+        {% for theme in result.themes %}
+            <span>{{ theme }}</span>
+        {% endfor %}
+        <h2>Stoic cards</h2>
+        {% for card in result.cards %}
+            <div>
+                <h3>{{ card.author }}</h3>
+                <p><em>{{ card.quote }}</em></p>
+                <strong>{{ card.principle }}</strong>
+                <p>{{ card.bridge }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
 {% endblock %}
