@@ -18,7 +18,7 @@ def register():
 
         # Check if email already exist
         existing_user = User.query.filter_by(email=email).first()
-        print(existing_user)
+
         if existing_user:
             flash('Email already exist.', 'error')
             return redirect(url_for('auth.register'))

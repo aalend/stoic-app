@@ -1,8 +1,8 @@
 {% extends "base.html" %}
-{% block title %}Home | Stoic Mirror{% endblock %}
+{% block title %}Home | Stoic Mirror{% endblock title %}
 {% block content %}
     <h1>How are you today?</h1>
-    <form method="POST">
+    <form method="post">
         <textarea name="entry_text" id="" placeholder="How was your day?"></textarea>
         <button type="submit">Seek wisdom</button>
     </form>
@@ -21,4 +21,4 @@
             </div>
         {% endfor %}
     {% endif %}
-{% endblock %}
+{% endblock content %}

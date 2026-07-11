@@ -61,3 +61,6 @@ known-first-party = ["app"]  # change "app" to your package name
 # Ruff has a built-in formatter (Black replacement)
 quote-style = "single"
 indent-style = "space"
+
+[tool.mypy]
+ignore_missing_imports = true

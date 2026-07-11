@@ -1,30 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %} Stoic Mirror {% endblock %}</title>
-  </head>
-  <body>
-    <nav class="site-nav">
-      <a href="{{ url_for('main.index') }}">Stoic Mirror</a>
-
-      {% if session.get('user_id') %}
-      <a href="{{ url_for('main.history') }}">History</a>
-      <a href="{{ url_for('auth.logout') }}">Logout</a>
-      {% else %}
-      <a href="{{ url_for('auth.login') }}">Login</a>
-      <a href="{{ url_for('auth.register') }}">Register</a>
-      {% endif %}
-
-      <!-- Flash messages -->
-      {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for
-      category, message in messages %}
-      <p class="{{ category }}">{{ message }}</p>
-      {% endfor %} {% endif %} {% endwith %}
-
-      <!-- Block content placeholder -->
-      <main id="site-main" tabindex="-1">{% block content %}{% endblock %}</main>
-    </nav>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{% block title %} Stoic Mirror {% endblock title %}</title>
+    </head>
+    <body>
+        <nav class="site-nav">
+            <a href="{{ url_for('main.index') }}">Stoic Mirror</a>
+            {% if session.get('user_id') %}
+                <a href="{{ url_for('main.history') }}">History</a>
+                <a href="{{ url_for('auth.logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('auth.login') }}">Login</a>
+                <a href="{{ url_for('auth.register') }}">Register</a>
+            {% endif %}
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <p class="{{ category }}">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <main id="site-main" tabindex="-1">
+                {% block content %}
+                {% endblock content %}
+            </main>
+        </nav>
+    </body>
 </html>

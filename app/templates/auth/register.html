@@ -1,12 +1,10 @@
 {% extends "base.html" %}
-
-{% block title %}Register | Stoic Mirror{% endblock %}
-
+{% block title %}Register | Stoic Mirror{% endblock title %}
 {% block content %}
-<form method="POST">
-    <input type="text" name="name" placeholder="Name">
-    <input type="email" name="email" placeholder="Email">
-    <input type="password" name="password" placeholder="Password">
-    <button type="submit">Register</button>
-</form>
-{% endblock %}
+    <form method="post">
+        <input type="text" name="name" placeholder="Name">
+        <input type="email" name="email" placeholder="Email">
+        <input type="password" name="password" placeholder="Password">
+        <button type="submit">Register</button>
+    </form>
+{% endblock content %}
