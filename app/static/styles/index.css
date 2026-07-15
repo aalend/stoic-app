@@ -1,0 +1,212 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root {
+  --type--2: clamp(0.7813rem, 0.7736rem + 0.0341vw, 0.8rem);
+  --type--1: clamp(0.9375rem, 0.9119rem + 0.1136vw, 1rem);
+  --type-0: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem);
+  --type-1: clamp(1.35rem, 1.2631rem + 0.3864vw, 1.5625rem);
+  --type-2: clamp(1.62rem, 1.4837rem + 0.6057vw, 1.9531rem);
+  --type-3: clamp(1.944rem, 1.7405rem + 0.9044vw, 2.4414rem);
+  --type-4: clamp(2.3328rem, 2.0387rem + 1.3072vw, 3.0518rem);
+  --type-5: clamp(2.7994rem, 2.384rem + 1.8461vw, 3.8147rem);
+
+  --space-3xs: clamp(0.3125rem, 0.3125rem + 0vw, 0.3125rem);
+  --space-2xs: clamp(0.5625rem, 0.5369rem + 0.1136vw, 0.625rem);
+  --space-xs: clamp(0.875rem, 0.8494rem + 0.1136vw, 0.9375rem);
+  --space-s: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem);
+  --space-m: clamp(1.6875rem, 1.6108rem + 0.3409vw, 1.875rem);
+  --space-l: clamp(2.25rem, 2.1477rem + 0.4545vw, 2.5rem);
+  --space-xl: clamp(3.375rem, 3.2216rem + 0.6818vw, 3.75rem);
+  --space-2xl: clamp(4.5rem, 4.2955rem + 0.9091vw, 5rem);
+  --space-3xl: clamp(6.75rem, 6.4432rem + 1.3636vw, 7.5rem);
+
+  --clr-bg: #0e0d0b;
+  --clr-surface: #151410;
+  --clr-border: #2a2720;
+  --clr-gold: #c9a84c;
+  --clr-gold-dim: #7a6430;
+  --clr-text: #e8e0d0;
+  --clr-muted: #6b6458;
+  --clr-accent: #d4a843;
+  --clr-error: #c0644a;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: var(--clr-text);
+  background-color: var(--clr-bg);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url('../assets/bg-grain.svg');
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+textarea {
+  resize: none;
+  min-width: 100%;
+  height: 30vh;
+}
+
+a {
+  text-decoration: none;
+  color: currentColor;
+}
+
+.wrapper {
+  max-width: 48.75rem;
+  padding-inline: 1rem;
+  margin-inline: auto;
+}
+
+.wrapper[data-variant='narrow'] {
+  max-width: 28.75rem;
+}
+
+.region {
+  padding-block: var(--space-3xl);
+}
+
+.flow>*+* {
+  margin-block-start: var(--flow-space, var(--space-md, 1.5rem));
+}
+
+.text-small {
+  font-size: var(--type--2);
+}
+
+.accent-gold {
+  color: var(--clr-gold-dim);
+  transition: color 75ms linear;
+
+  &:hover {
+    color: var(--clr-accent);
+  }
+}
+
+/* SITE NAVIGATION */
+.site-nav {
+  display: flex;
+  gap: var(--space-s);
+  padding-block: var(--space-m);
+}
+
+.site-nav :nth-child(1) {
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 0.0525rem;
+}
+
+.site-nav :nth-child(2) {
+  margin-inline-start: auto;
+}
+
+
+/* FORMS */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+}
+
+.form-label {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+input {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--clr-accent);
+  border-radius: 0.5rem;
+
+}
+
+.button {
+  background-color: var(--clr-gold-dim);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 75ms linear;
+
+  &:hover {
+    background-color: var(--clr-accent);
+  }
+}

@@ -1,0 +1,4 @@
+{% macro nav_link(endpoint, text) %}
+  <a href="{{ url_for(endpoint) }}"
+     aria-current="{{ 'page' if request.endpoint == endpoint else 'false' }}">{{ text }}</a>
+{% endmacro %}

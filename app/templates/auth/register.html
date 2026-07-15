@@ -1,10 +1,29 @@
 {% extends "base.html" %}
 {% block title %}Register | Stoic Mirror{% endblock title %}
 {% block content %}
-    <form method="post">
-        <input type="text" name="name" placeholder="Name">
-        <input type="email" name="email" placeholder="Email">
-        <input type="password" name="password" placeholder="Password">
-        <button type="submit">Register</button>
-    </form>
+    <section class="region">
+        <div class="wrapper flow"
+             data-variant="narrow"
+             aria-labelledby="form-login-title">
+            <div>
+                <h1 id="form-login-title">Create an account</h1>
+                <p class="text-small">Already have an account? Go to <a class="accent-gold" href="{{ url_for('auth.login') }}">login</a> page.</p>
+            </div>
+            <form method="post" class="form">
+                <div class="form-label">
+                    <label for="name">User name</label>
+                    <input type="name" name="name" placeholder="stoicmirror">
+                </div>
+                <div class="form-label">
+                    <label for="email">Email address</label>
+                    <input type="email" name="email" placeholder="stoic@mirror.com">
+                </div>
+                <div class="form-label">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" placeholder="Your password">
+                </div>
+                <button class="button form-button" type="submit">Create an account</button>
+            </form>
+        </div>
+    </section>
 {% endblock content %}
